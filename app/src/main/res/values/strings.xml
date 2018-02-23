@@ -193,6 +193,10 @@
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
 
+    <string name="version_no">Version 1.0.1</string>
+    <string name="all_rights_reserved">All rights reserved.</string>
+    <string name="copyright_text">© 2018 Aiora Inc.</string>
+
     <!-- Attachment & Media -->
     <string name="background_audio">Playing audio</string>
     <string name="download_permission_explaination">In order to download files, you need to grant us permission to your storage.\n\nAfter granting us access, you may go ahead and download the file.</string>

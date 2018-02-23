@@ -410,6 +410,8 @@ public class MainActivity extends AppCompatActivity implements MenuItemCallback,
             case R.id.favorites:
                 HolderActivity.startActivity(this, FavFragment.class, null);
                 return true;
+            case R.id.about:
+                startActivity(new Intent(this, about.class));
             default:
                 return super.onOptionsItemSelected(item);
         }
