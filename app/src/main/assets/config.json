@@ -1,0 +1,386 @@
+[
+  {
+    "title":"Today's Feed",
+    "drawable":"feed",
+    "submenu":"",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Feed",
+        "provider":"wordpress",
+        "arguments":[
+          "theetrendy.wordpress.com"
+
+        ]
+      },
+      {
+        "title":"Tech",
+        "provider":"wordpress",
+        "arguments":[
+          "beebom.com"
+
+        ]
+      }
+
+    ]
+  },
+  {
+    "title":"Question of the Day",
+    "drawable":"quora",
+    "submenu":"",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Quora Question Of The Day",
+        "provider":"wordpress",
+        "arguments":[
+          "theetrendy.wordpress.com", "quora"
+        ]
+      }
+
+    ]
+  },
+  {
+    "title":"Video of the Day",
+    "drawable":"youtube",
+    "submenu":"",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Quora Question Of The Day",
+        "provider":"wordpress",
+        "arguments":[
+          "theetrendy.wordpress.com", "video"
+        ]
+      }
+
+    ]
+  },
+  {
+    "title":"Article of the Day",
+    "drawable":"article1",
+    "submenu":"",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Today's Best Article",
+        "provider":"wordpress",
+        "arguments":[
+          "theetrendy.wordpress.com", "article"
+        ]
+      }
+    ]
+  },
+  {
+    "title":"Tweet of the Day",
+    "drawable":"twitter",
+    "submenu":"",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Tweet of the Day",
+        "provider":"wordpress",
+        "arguments":[
+          "theetrendy.wordpress.com", "twitter"
+        ]
+      }
+
+
+    ]
+  },
+  {
+    "title":"News of the Day",
+    "drawable":"newspaper",
+    "submenu":"",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Tweet of the Day",
+        "provider":"wordpress",
+        "arguments":[
+          "theetrendy.wordpress.com", "news"
+        ]
+      }
+
+
+    ]
+  },
+  {
+    "title":"Wallpaper of the Day",
+    "drawable":"wall",
+    "submenu":"",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Wallpaper",
+        "provider":"tumblr",
+        "arguments":[
+          "ehlockscreenstwo"
+        ]
+      }
+    ]
+  },
+  {
+    "title":"Movie of the Day",
+    "drawable":"movie",
+    "submenu":"",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Movie to watch Today",
+        "provider":"wordpress",
+        "arguments":[
+          "theetrendy.wordpress.com", "movie"
+        ]
+      }
+    ]
+  },
+
+  {
+    "title":"Personality of the Day",
+    "drawable":"personality",
+    "submenu":"",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Movie to watch Today",
+        "provider":"wordpress",
+        "arguments":[
+          "theetrendy.wordpress.com", "personality"
+        ]
+      }
+    ]
+  },
+  {
+    "title":"Feedback/Suggestions",
+    "drawable":"feedback",
+    "submenu":"Other",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Feedback",
+        "provider":"webview",
+        "arguments":[
+          "http://zoopfeed.com/trendy/feedback-form/"
+        ]
+      }
+    ]
+
+  }
+
+  /*{
+    "title":"Tumblr",
+    "drawable":"tumblr",
+    "submenu":"Social Media",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Tumblr",
+        "provider":"tumblr",
+        "arguments":[
+          "alternativexpez"
+        ]
+      }
+    ]
+  },
+  {
+    "title":"SoundCloud",
+    "drawable":"soundcloud",
+    "submenu":"Social Media",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"User",
+        "provider":"soundcloud",
+        "arguments":[
+          "13568105", "user"
+        ]
+      },
+      {
+        "title":"Playlist",
+        "provider":"soundcloud",
+        "arguments":[
+          "104226047", "playlist"
+        ]
+      }
+    ]
+  },
+  {
+    "title":"Twitter",
+    "drawable":"twitter",
+    "submenu":"Social Media",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Twitter",
+        "provider":"twitter",
+        "arguments":[
+          "Android"
+        ]
+      }
+    ]
+  },
+  {
+    "title":"Instagram",
+    "drawable":"instagram",
+    "submenu":"Social Media",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Instagram",
+        "provider":"instagram",
+        "arguments":[
+          "?#surat"
+        ]
+      }
+    ]
+  },
+  {
+    "title":"Facebook",
+    "drawable":"facebook",
+    "submenu":"Social Media",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Facebook",
+        "provider":"facebook",
+        "arguments":[
+          "104958162837"
+        ]
+      }
+    ]
+  },
+  {
+    "title":"Youtube",
+    "drawable":"youtube",
+    "submenu":"Social Media",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Youtube Live",
+        "provider":"youtube",
+        "arguments":[
+          "TopTrendingTV",
+          "live"
+        ]
+      },
+      {
+        "title":"Youtube Playlist",
+        "provider":"youtube",
+        "arguments":[
+          "UU7V6hW6xqPAiUfataAZZtWA",
+          "playlist"
+        ]
+      },
+      {
+        "title":"Youtube Channel",
+        "provider":"youtube",
+        "arguments":[
+          "UCoMdktPbSTixAyNGwb-UYkQ",
+          "channel"
+        ]
+      }
+    ]
+  },
+  {
+    "title":"Pinterest",
+    "drawable":"pinterest",
+    "submenu":"Social Media",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Pinterest",
+        "provider":"pinterest",
+        "arguments":[
+          "515451188540423446"
+        ]
+      }
+    ]
+  },
+  {
+    "title":"WebView",
+    "drawable":"",
+    "submenu":"Other",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"WebView",
+        "provider":"webview",
+        "arguments":[
+          "http://www.google.com"
+        ]
+      }
+    ]
+
+  },
+  {
+    "title":"Categories",
+    "drawable":"",
+    "submenu":"Other",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Categories",
+        "provider":"overview",
+        "arguments":[
+          "overview.json"
+        ]
+      }
+    ]
+  }
+  {
+    "title":"Wordpress Other",
+    "drawable":"",
+    "submenu":"Other",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"WP JSON & Disqus",
+        "provider":"wordpress",
+        "arguments":[
+          "http://androidpolice.com",
+          "",
+          "http://androidpolice.disqus.com/;androidpolice;%d http://www.androidpolice.com/?p=%d"
+        ]
+      },
+      {
+        "title":"WP REST",
+        "provider":"wordpress",
+        "arguments":[
+          "https://wordpress.org/news/wp-json/wp/v2/",
+          ""
+        ]
+      }
+    ]
+  },
+  {
+    "title":"Location",
+    "drawable":"",
+    "submenu":"Other",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"",
+        "provider":"maps",
+        "arguments":[
+          "https://www.mapbox.com/help/data/stations.geojson"
+        ]
+      }
+    ]
+  },
+  {
+    "title":"Custom",
+    "drawable":"",
+    "submenu":"Other",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"",
+        "provider":"custom",
+        "arguments":[
+          "com.sherdle.universal.SettingsFragment", "fragment"
+        ]
+      }
+    ]
+  }*/
+]

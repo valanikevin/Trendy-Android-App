@@ -1,0 +1,56 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+        maven {
+            url 'https://jitpack.io'
+        }
+    }
+}
+
+buildscript {
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+
+    }
+    repositories {
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+    }
+}
+
+ext {
+    supportlib_version = '26.0.2'
+    gps_version = '11.2.0'
+}
+
+//Ensure that all dependencies use the same version of the Android Support library
+subprojects {
+    project.configurations.all {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'com.android.support'
+                    && !details.requested.name.contains('multidex')) {
+                details.useVersion "$supportlib_version"
+            }
+            if (details.requested.group == 'com.google.android.gms'
+                    && !details.requested.name.contains('multidex')) {
+                details.useVersion "$gps_version"
+            }
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+    }
+}

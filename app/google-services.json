@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "494138530056",
+    "firebase_url": "https://trendy-app.firebaseio.com",
+    "project_id": "trendy-app",
+    "storage_bucket": "trendy-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494138530056:android:79febb9a71f4412e",
+        "android_client_info": {
+          "package_name": "com.aiora.trendy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494138530056-hc2tqoqipon1irm8uu5mbnh9e3p9705r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-PeO7EAAJ9xAzlpV_ib7cIRv3Na86ROU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
