@@ -11,6 +11,11 @@ import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.onesignal.OSNotificationAction;
 import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OSNotificationPayload;
@@ -18,6 +23,9 @@ import com.onesignal.OneSignal;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -65,12 +73,18 @@ public class App extends Application {
                     switch (result.action.actionID) {
                         case "true":
                             generateNotification("Your Answer Is Correct", body, correctAnswer);
+                            updateDatabase(correctAnswer, ans.get(0).text,
+                                    ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
                         case "false":
                             generateNotification("Better Luck Next Time", body, correctAnswer);
+                            updateDatabase(correctAnswer, ans.get(0).text,
+                                    ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
                         case "close":
                             generateNotification("No, But Very Close", body, correctAnswer);
+                            updateDatabase(correctAnswer, ans.get(0).text,
+                                    ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
                     }
                 }
@@ -102,7 +116,7 @@ public class App extends Application {
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationHelper notificationHelper = new NotificationHelper(this);
-            Notification.Builder builder = notificationHelper.getNotification1(title, body, message,answer);
+            Notification.Builder builder = notificationHelper.getNotification1(title, body, message, answer);
             if (builder != null) {
                 notificationHelper.notify(1001, builder);
             }
@@ -114,7 +128,7 @@ public class App extends Application {
                             .setContentTitle(title)
                             .setPriority(Notification.PRIORITY_MAX)
                             .setContentText(message);
-            if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[0]);
+            if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[100]);
 
             NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
             bigText.bigText(message + "\n\n" + body + "\n" + answer);
@@ -127,6 +141,81 @@ public class App extends Application {
             assert mNotificationManager != null;
             mNotificationManager.notify(5678, mBuilder.build());
         }
+    }
+
+    public void updateDatabase(String ans, String op1, String op2, String op3, String ques, String identity) {
+
+        final String answer = ans;
+        final String optionOne = op1;
+        final String optionTwo = op2;
+        final String optionThree = op3;
+        final String question = ques;
+        final String id = identity;
+
+        final Date date = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        final String formattedDate = df.format(date);
+
+        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("quiz");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.hasChild(formattedDate)) {
+                    double t = (double) dataSnapshot.child(formattedDate).child("result").child("true").getValue();
+                    double f = (double) dataSnapshot.child(formattedDate).child("result").child("false").getValue();
+                    double c = (double) dataSnapshot.child(formattedDate).child("result").child("close").getValue();
+                    /*reference.child(formattedDate).child("answer").setValue(answer);
+                    reference.child(formattedDate).child("option1").setValue(optionOne);
+                    reference.child(formattedDate).child("option2").setValue(optionTwo);
+                    reference.child(formattedDate).child("option3").setValue(optionThree);
+                    reference.child(formattedDate).child("question").setValue(question);*/
+                    switch (id) {
+                        case "true":
+                            t++;
+                            reference.child(formattedDate).child("result").child("true").setValue(t);
+                            break;
+                        case "false":
+                            f++;
+                            reference.child(formattedDate).child("result").child("false").setValue(f);
+                            break;
+                        case "close":
+                            c++;
+                            reference.child(formattedDate).child("result").child("close").setValue(c);
+                            break;
+                    }
+                } else {
+                    reference.child(formattedDate).child("answer").setValue(answer);
+                    reference.child(formattedDate).child("option1").setValue(optionOne);
+                    reference.child(formattedDate).child("option2").setValue(optionTwo);
+                    reference.child(formattedDate).child("option3").setValue(optionThree);
+                    reference.child(formattedDate).child("question").setValue(question);
+                    switch (id) {
+                        case "true":
+                            reference.child(formattedDate).child("result").child("true").setValue(1);
+                            reference.child(formattedDate).child("result").child("false").setValue(0);
+                            reference.child(formattedDate).child("result").child("close").setValue(0);
+                            break;
+                        case "false":
+                            reference.child(formattedDate).child("result").child("true").setValue(0);
+                            reference.child(formattedDate).child("result").child("false").setValue(1);
+                            reference.child(formattedDate).child("result").child("close").setValue(0);
+                            break;
+                        case "close":
+                            reference.child(formattedDate).child("result").child("true").setValue(0);
+                            reference.child(formattedDate).child("result").child("false").setValue(0);
+                            reference.child(formattedDate).child("result").child("close").setValue(1);
+                            break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 }

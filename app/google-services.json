@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "494138530056",
-    "firebase_url": "https://trendy-app.firebaseio.com",
-    "project_id": "trendy-app",
-    "storage_bucket": "trendy-app.appspot.com"
+    "project_number": "155806077779",
+    "firebase_url": "https://trendy-aiora.firebaseio.com",
+    "project_id": "trendy-aiora",
+    "storage_bucket": "trendy-aiora.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:494138530056:android:79febb9a71f4412e",
+        "mobilesdk_app_id": "1:155806077779:android:79febb9a71f4412e",
         "android_client_info": {
           "package_name": "com.aiora.trendy"
         }
       },
       "oauth_client": [
         {
-          "client_id": "494138530056-hc2tqoqipon1irm8uu5mbnh9e3p9705r.apps.googleusercontent.com",
+          "client_id": "155806077779-q5fvpsjap3gtsd49k3a7m58aa8sgqolh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aiora.trendy",
+            "certificate_hash": "2d9af632766351cd0981fea84edd33f58e2b62cf"
+          }
+        },
+        {
+          "client_id": "155806077779-hd6kvt9s0i0n76lfd1nvj75glhmh8pb8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD-PeO7EAAJ9xAzlpV_ib7cIRv3Na86ROU"
+          "current_key": "AIzaSyAV3WbW1CdyHA1PYijbdjjkB2qv4Zz5EUA"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155806077779-hd6kvt9s0i0n76lfd1nvj75glhmh8pb8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
