@@ -33,7 +33,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="220dp">
+            android:layout_height="190dp">
 
             <ImageView
                 android:layout_margin="10dp"
@@ -75,7 +75,7 @@
                         android:layout_marginRight="30dp"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="Kevin's Your Work"
+                        android:text="Kevin's Work"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -85,13 +85,12 @@
                     android:id="@+id/kevin_facebook"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_marginBottom="5dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginStart="30dp"
@@ -110,7 +109,7 @@
                         android:gravity="left"
                         android:text=" /valanikevin"
                         android:textColor="@color/white"
-                        android:textSize="25sp" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -118,13 +117,12 @@
                     android:id="@+id/kevin_insta"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_marginBottom="5dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginStart="30dp"
@@ -143,7 +141,7 @@
                         android:gravity="left"
                         android:text=" /valanikevin"
                         android:textColor="@color/white"
-                        android:textSize="25sp" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -165,7 +163,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="220dp">
+            android:layout_height="190dp">
 
             <ImageView
                 android:layout_margin="10dp"
@@ -207,7 +205,7 @@
                         android:layout_marginRight="30dp"
                         android:layout_marginTop="5dp"
                         android:gravity="left"
-                        android:text="Siddique's Your Work"
+                        android:text="Siddique's Work"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -217,13 +215,12 @@
                     android:id="@+id/sid_facebook"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_marginBottom="5dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginStart="30dp"
@@ -242,7 +239,7 @@
                         android:gravity="left"
                         android:text=" /siddiqueshaikh"
                         android:textColor="@color/white"
-                        android:textSize="25sp" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -250,13 +247,12 @@
                     android:id="@+id/sid_insta"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_marginBottom="5dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginStart="30dp"
@@ -275,7 +271,7 @@
                         android:gravity="left"
                         android:text=" /siddiqueshaikh"
                         android:textColor="@color/white"
-                        android:textSize="25sp" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -297,7 +293,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="220dp">
+            android:layout_height="190dp">
 
             <ImageView
                 android:layout_margin="10dp"
@@ -339,7 +335,7 @@
                         android:layout_marginRight="30dp"
                         android:layout_marginTop="5dp"
                         android:gravity="left"
-                        android:text="Harsh's Your Work"
+                        android:text="Harsh's Work"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -349,13 +345,12 @@
                     android:id="@+id/harsh_facebook"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_marginBottom="5dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginStart="30dp"
@@ -374,7 +369,7 @@
                         android:gravity="left"
                         android:text=" /harsh_patel_99"
                         android:textColor="@color/white"
-                        android:textSize="25sp" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -382,13 +377,12 @@
                     android:id="@+id/harsh_insta"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_margin="5dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_marginBottom="5dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginStart="30dp"
@@ -407,7 +401,7 @@
                         android:gravity="left"
                         android:text=" /harsh_patel_99"
                         android:textColor="@color/white"
-                        android:textSize="25sp" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 

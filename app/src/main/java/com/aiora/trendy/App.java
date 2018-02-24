@@ -86,13 +86,24 @@ public class App extends Application {
 
     public void generateNotification(String message, String body) {
 
+        String title = "Quiz of the Day Answer";
+
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.article)
-                        .setContentTitle("Quiz of the Day Answer")
+                        .setContentTitle(title)
                         .setPriority(Notification.PRIORITY_MAX)
                         .setContentText(message);
         if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[0]);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationHelper notificationHelper = new NotificationHelper(this);
+            Notification.Builder builder = notificationHelper.getNotification1(title,body);
+            if (builder != null) {
+                notificationHelper.notify(1001, builder);
+            }
+
+        }
 
         NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
         bigText.bigText(body);

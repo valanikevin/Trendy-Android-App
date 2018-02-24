@@ -56,8 +56,6 @@ public class NotificationHelper extends ContextWrapper {
         getManager().notify(id, notification.build());
     }
 
-//Send your notifications to the NotificationManager system service//
-
     private NotificationManager getManager() {
         if (notifManager == null) {
             notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
