@@ -49,6 +49,17 @@ public class NotificationHelper extends ContextWrapper {
 
         if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[0]);
 
+        Notification.BigTextStyle bigText = new Notification.BigTextStyle();
+        bigText.bigText(body);
+
+        mBuilder.setStyle(bigText);
+
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        assert mNotificationManager != null;
+        mNotificationManager.notify(5678, mBuilder.build());
+
         return mBuilder;
     }
 
