@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="center"
-            android:text="Team"
+            android:text="@string/team_string"
             android:textColor="@color/white"
             android:textSize="35sp" />
 
@@ -27,7 +27,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="Kevin Valani"
+            android:text="@string/kevin_valani"
             android:textColor="@color/white"
             android:textSize="25sp" />
 
@@ -51,7 +51,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -59,11 +60,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginStart="30dp"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="Work : "
+                        android:text="@string/work_string"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -71,11 +70,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginEnd="30dp"
-                        android:layout_marginRight="30dp"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="Kevin's Work"
+                        android:text="@string/kevin_work"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -106,7 +103,7 @@
                         android:layout_marginEnd="30dp"
                         android:layout_marginRight="30dp"
                         android:layout_marginTop="5dp"
-                        android:gravity="left"
+                        android:gravity="center"
                         android:text=" /valanikevin"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
@@ -138,8 +135,8 @@
                         android:layout_marginEnd="30dp"
                         android:layout_marginRight="30dp"
                         android:layout_marginTop="5dp"
-                        android:gravity="left"
-                        android:text=" /valanikevin"
+                        android:gravity="center"
+                        android:text="@string/valanikevin_social"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -157,7 +154,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="Siddique Shaikh"
+            android:text="@string/siddique_shaikh"
             android:textColor="@color/white"
             android:textSize="25sp" />
 
@@ -181,7 +178,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -189,11 +187,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginStart="30dp"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="Work : "
+                        android:text="@string/work_string"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -201,11 +197,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginEnd="30dp"
-                        android:layout_marginRight="30dp"
                         android:layout_marginTop="5dp"
-                        android:gravity="left"
-                        android:text="Siddique's Work"
+                        android:gravity="center"
+                        android:text="@string/siddique_work"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -236,8 +230,8 @@
                         android:layout_marginEnd="30dp"
                         android:layout_marginRight="30dp"
                         android:layout_marginTop="5dp"
-                        android:gravity="left"
-                        android:text=" /siddiqueshaikh"
+                        android:gravity="center"
+                        android:text="@string/siddiqueshaikh_social"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -268,8 +262,8 @@
                         android:layout_marginEnd="30dp"
                         android:layout_marginRight="30dp"
                         android:layout_marginTop="5dp"
-                        android:gravity="left"
-                        android:text=" /siddiqueshaikh"
+                        android:gravity="center"
+                        android:text="@string/siddiqueshaikh_social"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -287,7 +281,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="Harsh Patel"
+            android:text="@string/harsh_patel"
             android:textColor="@color/white"
             android:textSize="25sp" />
 
@@ -311,7 +305,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -319,11 +314,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginStart="30dp"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="Work : "
+                        android:text="@string/work_string"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -331,11 +324,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginEnd="30dp"
-                        android:layout_marginRight="30dp"
                         android:layout_marginTop="5dp"
-                        android:gravity="left"
-                        android:text="Harsh's Work"
+                        android:gravity="center"
+                        android:text="@string/harsh_work"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -366,8 +357,8 @@
                         android:layout_marginEnd="30dp"
                         android:layout_marginRight="30dp"
                         android:layout_marginTop="5dp"
-                        android:gravity="left"
-                        android:text=" /harsh_patel_99"
+                        android:gravity="center"
+                        android:text="@string/harsh_patel_social"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -398,8 +389,8 @@
                         android:layout_marginEnd="30dp"
                         android:layout_marginRight="30dp"
                         android:layout_marginTop="5dp"
-                        android:gravity="left"
-                        android:text=" /harsh_patel_99"
+                        android:gravity="center"
+                        android:text="@string/harsh_patel_social"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 

@@ -243,4 +243,19 @@
     <string name="dialog_internet_title">No internet</string>
     <string name="dialog_internet_description">You seem to have no internet connection, this app requires internet to get the latest content.\n\nYou can continue accessing Liked Posts Offline by tapping <b>3 Dots in Top Right Corner then Liked Posts</b></string>
 
+    <string name="team_string">Team</string>
+    <string name="work_string">Work :</string>
+
+    <string name="kevin_valani"><u>Kevin Valani</u></string>
+    <string name="siddique_shaikh"><u>Siddique Shaikh</u></string>
+    <string name="harsh_patel"><u>Harsh Patel</u></string>
+
+    <string name="valanikevin_social">/valanikevin</string>
+    <string name="siddiqueshaikh_social">/siddiqueshaikh</string>
+    <string name="harsh_patel_social">/harsh_patel_99</string>
+
+    <string name="kevin_work">Graphics, Business, Development</string>
+    <string name="harsh_work">Developer, Tester, Handler</string>
+    <string name="siddique_work">PR, Research, Analyst</string>
+
 </resources>
