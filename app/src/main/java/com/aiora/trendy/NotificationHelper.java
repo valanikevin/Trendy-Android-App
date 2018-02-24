@@ -8,7 +8,6 @@ import android.content.ContextWrapper;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.NotificationCompat;
 
 /**
  * Created by HOME on 24-02-2018.
@@ -39,7 +38,7 @@ public class NotificationHelper extends ContextWrapper {
 
     }
 
-    public Notification.Builder getNotification1(String title, String body,String message) {
+    public Notification.Builder getNotification1(String title, String body,String message,String answer) {
         Notification.Builder mBuilder = new Notification.Builder(getApplicationContext(), CHANNEL_ONE_ID)
                 .setContentTitle(title)
                 .setContentText(message)
@@ -50,15 +49,9 @@ public class NotificationHelper extends ContextWrapper {
         if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[0]);
 
         Notification.BigTextStyle bigText = new Notification.BigTextStyle();
-        bigText.bigText(body + "\n" + message);
+        bigText.bigText(message + "\n\n" + body + "\n" + answer);
 
         mBuilder.setStyle(bigText);
-
-        NotificationManager mNotificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-        assert mNotificationManager != null;
-        mNotificationManager.notify(5678, mBuilder.build());
 
         return mBuilder;
     }

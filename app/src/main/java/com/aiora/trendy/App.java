@@ -9,12 +9,16 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.onesignal.OSNotificationAction;
 import com.onesignal.OSNotificationOpenResult;
+import com.onesignal.OSNotificationPayload;
 import com.onesignal.OneSignal;
 
 import org.json.JSONObject;
+
+import java.util.List;
 
 /**
  * This file is part of the Universal template
@@ -45,19 +49,28 @@ public class App extends Application {
                 //JSONObject data = result.notification.payload.additionalData;
                 //String webViewUrl = (data != null) ? data.optString("url", null) : null;
 
+                String correctAnswer = "";
+
                 OSNotificationAction.ActionType actionType = result.action.type;
                 String body = result.notification.payload.body;
+                List<OSNotificationPayload.ActionButton> ans = result.notification.payload.actionButtons;
+                for (int i = 0; i < ans.size(); i++) {
+                    if (ans.get(i).id.equals("true")) {
+                        correctAnswer = ans.get(i).text;
+                    }
+                }
+
                 if (actionType == OSNotificationAction.ActionType.ActionTaken) {
 
                     switch (result.action.actionID) {
                         case "true":
-                            generateNotification("Correct", body);
+                            generateNotification("Your Answer Is Correct", body, correctAnswer);
                             break;
                         case "false":
-                            generateNotification("Wrong", body);
+                            generateNotification("Better Luck Next Time", body, correctAnswer);
                             break;
                         case "close":
-                            generateNotification("Pretty Close", body);
+                            generateNotification("No, But Very Close", body, correctAnswer);
                             break;
                     }
                 }
@@ -83,13 +96,13 @@ public class App extends Application {
 
     }
 
-    public void generateNotification(String message, String body) {
+    public void generateNotification(String message, String body, String answer) {
 
         String title = "Quiz of the Day Answer";
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationHelper notificationHelper = new NotificationHelper(this);
-            Notification.Builder builder = notificationHelper.getNotification1(title, body, message);
+            Notification.Builder builder = notificationHelper.getNotification1(title, body, message,answer);
             if (builder != null) {
                 notificationHelper.notify(1001, builder);
             }
@@ -104,7 +117,7 @@ public class App extends Application {
             if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[0]);
 
             NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
-            bigText.bigText(body + "\n" + message);
+            bigText.bigText(message + "\n\n" + body + "\n" + answer);
 
             mBuilder.setStyle(bigText);
 
