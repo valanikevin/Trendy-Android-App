@@ -89,12 +89,12 @@ public class App extends Application {
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationHelper notificationHelper = new NotificationHelper(this);
-            Notification.Builder builder = notificationHelper.getNotification1(title,body,message);
+            Notification.Builder builder = notificationHelper.getNotification1(title, body, message);
             if (builder != null) {
                 notificationHelper.notify(1001, builder);
             }
 
-        }else{
+        } else {
             NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(this)
                             .setSmallIcon(R.drawable.article)
@@ -104,7 +104,7 @@ public class App extends Application {
             if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[0]);
 
             NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
-            bigText.bigText(body);
+            bigText.bigText(body + "\n" + message);
 
             mBuilder.setStyle(bigText);
 

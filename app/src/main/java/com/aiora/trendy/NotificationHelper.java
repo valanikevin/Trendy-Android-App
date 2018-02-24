@@ -50,7 +50,7 @@ public class NotificationHelper extends ContextWrapper {
         if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[0]);
 
         Notification.BigTextStyle bigText = new Notification.BigTextStyle();
-        bigText.bigText(body);
+        bigText.bigText(body + "\n" + message);
 
         mBuilder.setStyle(bigText);
 
