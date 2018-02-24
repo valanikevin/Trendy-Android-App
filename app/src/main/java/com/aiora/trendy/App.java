@@ -52,7 +52,6 @@ public class App extends Application {
                     switch (result.action.actionID) {
                         case "true":
                             generateNotification("Correct", body);
-
                             break;
                         case "false":
                             generateNotification("Wrong", body);
@@ -88,33 +87,33 @@ public class App extends Application {
 
         String title = "Quiz of the Day Answer";
 
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.article)
-                        .setContentTitle(title)
-                        .setPriority(Notification.PRIORITY_MAX)
-                        .setContentText(message);
-        if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[0]);
-
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationHelper notificationHelper = new NotificationHelper(this);
-            Notification.Builder builder = notificationHelper.getNotification1(title,body);
+            Notification.Builder builder = notificationHelper.getNotification1(title,body,message);
             if (builder != null) {
                 notificationHelper.notify(1001, builder);
             }
 
+        }else{
+            NotificationCompat.Builder mBuilder =
+                    new NotificationCompat.Builder(this)
+                            .setSmallIcon(R.drawable.article)
+                            .setContentTitle(title)
+                            .setPriority(Notification.PRIORITY_MAX)
+                            .setContentText(message);
+            if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[0]);
+
+            NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
+            bigText.bigText(body);
+
+            mBuilder.setStyle(bigText);
+
+            NotificationManager mNotificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+            assert mNotificationManager != null;
+            mNotificationManager.notify(5678, mBuilder.build());
         }
-
-        NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
-        bigText.bigText(body);
-
-        mBuilder.setStyle(bigText);
-
-        NotificationManager mNotificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-        assert mNotificationManager != null;
-        mNotificationManager.notify(5678, mBuilder.build());
     }
 
 }
