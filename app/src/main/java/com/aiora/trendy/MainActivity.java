@@ -1,10 +1,13 @@
 package com.aiora.trendy;
 
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -413,6 +416,9 @@ public class MainActivity extends AppCompatActivity implements MenuItemCallback,
             case R.id.about:
                 startActivity(new Intent(MainActivity.this,about.class));
                 return true;
+            case R.id.rate_us:
+                rateUsIntent(this);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -505,6 +511,22 @@ public class MainActivity extends AppCompatActivity implements MenuItemCallback,
                 (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
         params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
                 | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
+    }
+
+    private void rateUsIntent(Context context){
+        Uri uri = Uri.parse("market://details?id=" + context.getPackageName());
+        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+        // To count with Play market backstack, After pressing back button,
+        // to taken back to our application, we need to add following flags to intent.
+        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        try {
+            startActivity(goToMarket);
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
+        }
     }
 
 }

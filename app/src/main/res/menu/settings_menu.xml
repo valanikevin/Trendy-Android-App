@@ -15,4 +15,8 @@
     <item android:id="@+id/about"
         universal:showAsAction="never"
         android:title="About"/>
+
+    <item android:id="@+id/rate_us"
+        universal:showAsAction="never"
+        android:title="Rate us on Google Play"/>
 </menu>
