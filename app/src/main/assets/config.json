@@ -72,6 +72,21 @@
     ]
   },
   {
+    "title":"Thought Catalog",
+    "drawable":"thought",
+    "submenu":"",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"Thoughts Catalog",
+        "provider":"wordpress",
+        "arguments":[
+          "thoughtcatalog.com","uncategorized"
+        ]
+      }
+    ]
+  },
+  {
     "title":"Tweet of the Day",
     "drawable":"twitter",
     "submenu":"",
@@ -89,16 +104,56 @@
     ]
   },
   {
+    "title":"TED Blog",
+    "drawable":"thought",
+    "submenu":"",
+    "iap":false,
+    "tabs":[
+      {
+        "title":"TED",
+        "provider":"wordpress",
+        "arguments":[
+          "blog.ted.com","uncategorized"
+        ]
+      }
+
+
+    ]
+  },
+  {
     "title":"News of the Day",
     "drawable":"newspaper",
     "submenu":"",
     "iap":false,
     "tabs":[
       {
-        "title":"Tweet of the Day",
+        "title":"All News",
         "provider":"wordpress",
         "arguments":[
-          "theetrendy.wordpress.com", "news"
+          "time.com","uncategorized"
+        ]
+      },
+      {
+        "title":"Tech",
+        "provider":"wordpress",
+        "arguments":[
+          "techcrunch.com"
+        ]
+      },
+
+
+      {
+        "title":"Science",
+        "provider":"wordpress",
+        "arguments":[
+          "thewire.in","science"
+        ]
+      },
+      {
+        "title":"India",
+        "provider":"wordpress",
+        "arguments":[
+          "thewire.in","featured"
         ]
       }
 
