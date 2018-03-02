@@ -44,6 +44,8 @@ public class SettingsFragment extends PreferenceFragment implements
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.activity_settings);
 
+		getActivity().setTheme(R.style.settingFragmentTheme);
+
 		// open play store page
 		Preference preferencerate = findPreference("rate");
 		preferencerate

@@ -9,6 +9,9 @@
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="50dp"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:layout_height="50dp" />
+        android:layout_height="50dp"
+        android:indeterminate="true"
+        android:indeterminateTint="#fff"
+        android:indeterminateTintMode="src_in"/>
 
 </LinearLayout>

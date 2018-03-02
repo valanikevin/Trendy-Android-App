@@ -57,6 +57,8 @@ public class App extends Application {
                 //JSONObject data = result.notification.payload.additionalData;
                 //String webViewUrl = (data != null) ? data.optString("url", null) : null;
 
+                startActivity(new Intent(App.this,MainActivity.class));
+
                 OSNotificationAction.ActionType actionType = result.action.type;
                 List<OSNotificationPayload.ActionButton> ans = result.notification.payload.actionButtons;
 
