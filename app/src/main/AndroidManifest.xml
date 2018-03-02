@@ -139,7 +139,7 @@
         </provider>
 
         <activity android:name=".about" />
-        <activity android:name=".ContactTeam"></activity>
+        <activity android:name=".ContactTeam"/>
     </application>
 
 </manifest>
