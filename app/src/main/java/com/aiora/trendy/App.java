@@ -57,7 +57,12 @@ public class App extends Application {
                 //JSONObject data = result.notification.payload.additionalData;
                 //String webViewUrl = (data != null) ? data.optString("url", null) : null;
 
-                startActivity(new Intent(App.this,MainActivity.class));
+                if (!result.notification.isAppInFocus) {
+                    Intent mainIntent;
+                    mainIntent = new Intent(App.this, MainActivity.class);
+                    mainIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(mainIntent);
+                }
 
                 OSNotificationAction.ActionType actionType = result.action.type;
                 List<OSNotificationPayload.ActionButton> ans = result.notification.payload.actionButtons;

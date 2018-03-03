@@ -1,6 +1,7 @@
 package com.aiora.trendy.providers.woocommerce.ui;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -220,6 +221,10 @@ public class WooCommerceFragment extends Fragment implements WooCommerceTask.Cal
         final SearchView searchView = new SearchView(getActivity());
         searchView.setQueryHint(getResources().getString(
                 R.string.search_hint));
+        SearchView.SearchAutoComplete searchAutoComplete =
+                searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        searchAutoComplete.setHintTextColor(Color.parseColor("#ffffff"));
+        searchAutoComplete.setTextColor(Color.parseColor("#ffffff"));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             //
             @Override
@@ -245,7 +250,7 @@ public class WooCommerceFragment extends Fragment implements WooCommerceTask.Cal
 
         });
 
-        searchView .addOnAttachStateChangeListener(
+        searchView.addOnAttachStateChangeListener(
                 new View.OnAttachStateChangeListener() {
 
                     @Override

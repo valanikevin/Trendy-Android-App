@@ -58,7 +58,7 @@
   },
   {
     "title":"Article of the Day",
-    "drawable":"article1",
+    "drawable":"article",
     "submenu":"",
     "iap":false,
     "tabs":[

@@ -3,6 +3,7 @@ package com.aiora.trendy.providers.wordpress.ui;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -124,6 +125,10 @@ public class WordpressFragment extends Fragment implements InfiniteRecyclerViewA
 		final SearchView searchView = new SearchView(mAct);
 		searchView.setQueryHint(getResources().getString(
 				R.string.search_hint));
+		SearchView.SearchAutoComplete searchAutoComplete =
+				searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+		searchAutoComplete.setHintTextColor(Color.parseColor("#ffffff"));
+		searchAutoComplete.setTextColor(Color.parseColor("#ffffff"));
 		searchView.setOnQueryTextListener(new OnQueryTextListener() {
 			//
 			@Override
@@ -147,7 +152,7 @@ public class WordpressFragment extends Fragment implements InfiniteRecyclerViewA
 
 		});
 
-		searchView .addOnAttachStateChangeListener(
+		searchView.addOnAttachStateChangeListener(
 				new OnAttachStateChangeListener() {
 
 					@Override
