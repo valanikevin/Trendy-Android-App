@@ -25,7 +25,14 @@
         "title":"Fun/Viral",
         "provider":"rss",
         "arguments":[
-          "https://rvcj.com/feed"
+          "https://www.scoopwhoop.com/rss"
+        ]
+      },
+      {
+        "title":"Inspiration",
+        "provider":"rss",
+        "arguments":[
+          "https://www.briantracy.com/blog/feed/"
 
         ]
       }
