@@ -42,7 +42,7 @@ public class NotificationHelper extends ContextWrapper {
         Notification.Builder mBuilder = new Notification.Builder(getApplicationContext(), CHANNEL_ONE_ID)
                 .setContentTitle(title)
                 .setContentText(message)
-                .setSmallIcon(R.drawable.article)
+                .setSmallIcon(R.drawable.ic_stat_onesignal_default)
                 .setPriority(Notification.PRIORITY_MAX)
                 .setAutoCancel(true);
 
