@@ -20,6 +20,14 @@
           "beebom.com"
 
         ]
+      },
+      {
+        "title":"Fun/Viral",
+        "provider":"rss",
+        "arguments":[
+          "https://rvcj.com/feed"
+
+        ]
       }
 
     ]
@@ -97,23 +105,6 @@
         "provider":"wordpress",
         "arguments":[
           "theetrendy.wordpress.com", "twitter"
-        ]
-      }
-
-
-    ]
-  },
-  {
-    "title":"TED Blog",
-    "drawable":"thought",
-    "submenu":"",
-    "iap":false,
-    "tabs":[
-      {
-        "title":"TED",
-        "provider":"wordpress",
-        "arguments":[
-          "blog.ted.com","uncategorized"
         ]
       }
 
