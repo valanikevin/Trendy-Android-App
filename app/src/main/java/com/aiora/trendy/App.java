@@ -5,11 +5,9 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,8 +18,6 @@ import com.onesignal.OSNotificationAction;
 import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OSNotificationPayload;
 import com.onesignal.OneSignal;
-
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
