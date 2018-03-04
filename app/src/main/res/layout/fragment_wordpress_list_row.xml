@@ -35,12 +35,13 @@
 
             <TextView
                 android:id="@+id/title"
+                android:fontFamily="sans-serif"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/listTitleStyle"
                 android:text="@string/empty_textview"
                 android:padding="@dimen/spacing_s"
-                android:textSize="@dimen/textsize_m"
+                android:textSize="15sp"
                 android:color="@color/grey_darker"
                 android:layout_toEndOf="@id/thumbImage"
                 android:layout_toRightOf="@id/thumbImage" />

@@ -76,17 +76,17 @@ public class App extends Application {
 
                     switch (result.action.actionID) {
                         case "true":
-                            generateNotification("Your Answer Is Correct", body, correctAnswer);
+                            generateNotification("Correct Answer Dude", "Question:"+body, "Correct Answer:"+correctAnswer);
                             updateDatabase(correctAnswer, ans.get(0).text,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
                         case "false":
-                            generateNotification("Better Luck Next Time", body, correctAnswer);
+                            generateNotification("Wrong Answer Dude, But That's Fine", "Question:"+body, "Correct Answer:"+correctAnswer);
                             updateDatabase(correctAnswer, ans.get(0).text,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
                         case "close":
-                            generateNotification("No, But Very Close", body, correctAnswer);
+                            generateNotification("Nope, But That Was Very Close Dude","Question:"+body, "Correct Answer:"+correctAnswer);
                             updateDatabase(correctAnswer, ans.get(0).text,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
@@ -120,7 +120,7 @@ public class App extends Application {
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationHelper notificationHelper = new NotificationHelper(this);
-            Notification.Builder builder = notificationHelper.getNotification1(title, body, message, answer);
+            Notification.Builder builder = notificationHelper.getNotification1(title,body,message,answer);
             if (builder != null) {
                 notificationHelper.notify(1001, builder);
             }
@@ -135,7 +135,7 @@ public class App extends Application {
             if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[100]);
 
             NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
-            bigText.bigText(message + "\n\n" + body + "\n" + answer);
+            bigText.bigText("Question:"+message + "\n\n" + body + "\n" + "Answer"+answer);
 
             mBuilder.setStyle(bigText);
 

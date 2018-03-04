@@ -31,6 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_gravity="center_vertical"
+                    android:paddingTop="10dp"
                     android:src="@drawable/ic_launcher" />
             </LinearLayout>
 
@@ -64,6 +65,7 @@
                 android:paddingTop="@dimen/spacing_s"
                 android:text="@string/empty_textview"
                 android:textSize="@dimen/textsize_s"
+                android:maxLines="7"
                 android:textColor="@color/grey_darker"/>
 
             <TextView

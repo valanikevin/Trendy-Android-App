@@ -102,23 +102,6 @@
     ]
   },
   {
-    "title":"Tweet of the Day",
-    "drawable":"twitter",
-    "submenu":"",
-    "iap":false,
-    "tabs":[
-      {
-        "title":"Tweet of the Day",
-        "provider":"wordpress",
-        "arguments":[
-          "theetrendy.wordpress.com", "twitter"
-        ]
-      }
-
-
-    ]
-  },
-  {
     "title":"News of the Day",
     "drawable":"newspaper",
     "submenu":"",
@@ -214,7 +197,7 @@
         "title":"Feedback",
         "provider":"webview",
         "arguments":[
-          "http://zoopfeed.com/trendy/feedback-form/"
+          "https://theetrendy.wordpress.com/feedback"
         ]
       }
     ]
