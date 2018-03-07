@@ -41,6 +41,7 @@ repositories {
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.google.firebase:firebase-database:11.2.0'
+    compile 'com.google.firebase:firebase-ads:11.2.0'
     compile 'com.devbrackets.android:exomedia:4.0.3'
     //TV
     compile 'com.cleveroad:audiovisualization:1.0.0'
