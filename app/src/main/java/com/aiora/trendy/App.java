@@ -3,11 +3,13 @@ package com.aiora.trendy;
 import android.app.Application;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,6 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * This file is part of the Universal template
@@ -53,6 +56,8 @@ public class App extends Application {
                 //JSONObject data = result.notification.payload.additionalData;
                 //String webViewUrl = (data != null) ? data.optString("url", null) : null;
 
+                OSNotificationAction.ActionType actionType = result.action.type;
+
                 if (!result.notification.isAppInFocus) {
                     Intent mainIntent;
                     mainIntent = new Intent(App.this, MainActivity.class);
@@ -60,7 +65,6 @@ public class App extends Application {
                     startActivity(mainIntent);
                 }
 
-                OSNotificationAction.ActionType actionType = result.action.type;
                 List<OSNotificationPayload.ActionButton> ans = result.notification.payload.actionButtons;
 
                 String correctAnswer = "";
@@ -76,17 +80,17 @@ public class App extends Application {
 
                     switch (result.action.actionID) {
                         case "true":
-                            generateNotification("Correct Answer Dude", "Question:"+body, "Correct Answer:"+correctAnswer);
+                            generateNotification("Your Answer Is Correct", body, correctAnswer);
                             updateDatabase(correctAnswer, ans.get(0).text,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
                         case "false":
-                            generateNotification("Wrong Answer Dude, But That's Fine", "Question:"+body, "Correct Answer:"+correctAnswer);
+                            generateNotification("Better Luck Next Time", body, correctAnswer);
                             updateDatabase(correctAnswer, ans.get(0).text,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
                         case "close":
-                            generateNotification("Nope, But That Was Very Close Dude","Question:"+body, "Correct Answer:"+correctAnswer);
+                            generateNotification("No, But Very Close", body, correctAnswer);
                             updateDatabase(correctAnswer, ans.get(0).text,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
@@ -116,14 +120,20 @@ public class App extends Application {
 
     public void generateNotification(String message, String body, String answer) {
 
-        String title = "Last Quiz Result:";
+        String title = "Quiz of the Day Answer";
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationHelper notificationHelper = new NotificationHelper(this);
-            Notification.Builder builder = notificationHelper.getNotification1(title,body,message,answer);
-            if (builder != null) {
-                notificationHelper.notify(1001, builder);
-            }
+            Notification.Builder builder = notificationHelper.getNotification1(title, body, message, answer);
+
+            Intent notificationIntent = new Intent(App.this, MainActivity.class);
+            notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            PendingIntent intent = PendingIntent.getActivity(getApplicationContext(), 0,
+                    notificationIntent, 0);
+            builder.setContentIntent(intent);
+
+            notificationHelper.notify(1001, builder);
 
         } else {
             NotificationCompat.Builder mBuilder =
@@ -135,9 +145,16 @@ public class App extends Application {
             if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[100]);
 
             NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
-            bigText.bigText("Question:"+message + "\n\n" + body + "\n" + "Answer"+answer);
+            bigText.bigText(message + "\n\n" + body + "\n" + answer);
 
             mBuilder.setStyle(bigText);
+
+            Intent notificationIntent = new Intent(App.this, MainActivity.class);
+            notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            PendingIntent intent = PendingIntent.getActivity(getApplicationContext(), 0,
+                    notificationIntent, 0);
+            mBuilder.setContentIntent(intent);
 
             NotificationManager mNotificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -157,45 +174,41 @@ public class App extends Application {
         final String id = identity;
 
         final Date date = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.UK);
         final String formattedDate = df.format(date);
 
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("quiz");
-        //reference.getParent().child("test").setValue(Calendar.getInstance().getTimeInMillis());
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if (dataSnapshot.child(formattedDate).exists() &&
-                        dataSnapshot.child(formattedDate).child(question).exists()) {
-                    Integer t = dataSnapshot.child(formattedDate).child(question).child("result")
-                            .child("true").getValue(Integer.class);
-                    Integer f = dataSnapshot.child(formattedDate).child(question).child("result")
-                            .child("false").getValue(Integer.class);
-                    Integer c = dataSnapshot.child(formattedDate).child(question).child("result")
-                            .child("close").getValue(Integer.class);
-                    /*reference.child(formattedDate).child("answer").setValue(answer);
-                    reference.child(formattedDate).child("option1").setValue(optionOne);
-                    reference.child(formattedDate).child("option2").setValue(optionTwo);
-                    reference.child(formattedDate).child("option3").setValue(optionThree);
-                    reference.child(formattedDate).child("question").setValue(question);*/
+                if (dataSnapshot.child(formattedDate).exists()
+                        /*dataSnapshot.child(formattedDate).child(question).exists()*/) {
+                    if (dataSnapshot.child(formattedDate).child(question).exists()) {
+                        Integer t = dataSnapshot.child(formattedDate).child(question).child("result")
+                                .child("true").getValue(Integer.class);
+                        Integer f = dataSnapshot.child(formattedDate).child(question).child("result")
+                                .child("false").getValue(Integer.class);
+                        Integer c = dataSnapshot.child(formattedDate).child(question).child("result")
+                                .child("close").getValue(Integer.class);
 
-                    if (t != null || f != null || c != null)
+                        if (t != null || f != null || c != null)
 
-                        switch (id) {
-                            case "true":
-                                reference.child(formattedDate).child(question).child("result")
-                                        .child("true").setValue(t + 1);
-                                break;
-                            case "false":
-                                reference.child(formattedDate).child(question).child("result")
-                                        .child("false").setValue(f + 1);
-                                break;
-                            case "close":
-                                reference.child(formattedDate).child(question).child("result")
-                                        .child("close").setValue(c + 1);
-                                break;
-                        }
+                            switch (id) {
+                                case "true":
+                                    reference.child(formattedDate).child(question).child("result")
+                                            .child("true").setValue(t + 1);
+                                    break;
+                                case "false":
+                                    reference.child(formattedDate).child(question).child("result")
+                                            .child("false").setValue(f + 1);
+                                    break;
+                                case "close":
+                                    reference.child(formattedDate).child(question).child("result")
+                                            .child("close").setValue(c + 1);
+                                    break;
+                            }
+                    }
                 } else {
                     reference.child(formattedDate).child(question).child("answer").setValue(answer);
                     reference.child(formattedDate).child(question).child("option1").setValue(optionOne);

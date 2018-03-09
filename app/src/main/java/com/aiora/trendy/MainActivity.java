@@ -414,7 +414,7 @@ public class MainActivity extends AppCompatActivity implements MenuItemCallback,
                 HolderActivity.startActivity(this, FavFragment.class, null);
                 return true;
             case R.id.about:
-                startActivity(new Intent(MainActivity.this,about.class));
+                startActivity(new Intent(MainActivity.this, about.class));
                 return true;
             case R.id.rate_us:
                 rateUsIntent(this);
@@ -455,8 +455,10 @@ public class MainActivity extends AppCompatActivity implements MenuItemCallback,
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if (!(adapter.getCurrentFragment() instanceof ConfigurationChangeFragment))
-            this.recreate();
+        if (adapter != null) {
+            if (!(adapter.getCurrentFragment() instanceof ConfigurationChangeFragment))
+                this.recreate();
+        }
     }
 
 
@@ -513,7 +515,7 @@ public class MainActivity extends AppCompatActivity implements MenuItemCallback,
                 | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
     }
 
-    private void rateUsIntent(Context context){
+    private void rateUsIntent(Context context) {
         Uri uri = Uri.parse("market://details?id=" + context.getPackageName());
         Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
         // To count with Play market backstack, After pressing back button,

@@ -258,4 +258,6 @@
     <string name="harsh_work">Developer, Tester, Handler</string>
     <string name="siddique_work">PR, Research, Analyst</string>
 
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+
 </resources>

@@ -63,7 +63,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
 
-                <Button
+                <!--<Button
                     android:id="@+id/button2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="13dp"
                     android:text="Tap to View Liked Posts"
-                    android:onClick=""/>
+                    android:onClick=""/>-->
 
             </RelativeLayout>
 
