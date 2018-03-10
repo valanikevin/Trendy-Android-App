@@ -68,48 +68,23 @@ public class App extends Application {
                     }
                 }
 
-                ArrayList<String> trueSentences = new ArrayList<>();
-                ArrayList<String> falseSentences = new ArrayList<>();
-                ArrayList<String> closeSentences = new ArrayList<>();
+                if (actionType == OSNotificationAction.ActionType.ActionTaken) {
 
-  /*------->*/  trueSentences.add("Your Answer Is Correct");
-  /*|*/         trueSentences.add("");
-  /*|*/         trueSentences.add("");
-  /*|*/         trueSentences.add("");
-  /*|*/         trueSentences.add("");
-  /*|*/
-  /*------->*/  falseSentences.add("Better Luck Next Time");
-  /*|*/         falseSentences.add("");
-  /*|*/         falseSentences.add("");
-  /*|*/         falseSentences.add("");
-  /*|*/         falseSentences.add("");
-  /*|*/
-  /*------->*/  closeSentences.add("No, But Very Close");
-  /*|*/         closeSentences.add("");
-  /*|*/         closeSentences.add("");
-  /*|*/         closeSentences.add("");
-  /*|*/         closeSentences.add("");
-  /*|*/
-  /*|*/         if (actionType == OSNotificationAction.ActionType.ActionTaken) {
-  /*|*/
-  /*|*/             String body = result.notification.payload.body;
-  /*|*/
-  //|<-----------   // Chhange the argument after adding more options in array list
-                    Random random = new Random(1);
+                    String body = result.notification.payload.body;
 
                     switch (result.action.actionID) {
                         case "true":
-                            generateNotification(trueSentences.get(random.nextInt()), body, correctAnswer);
+                            generateNotification("Your Answer Is Correct", body, correctAnswer);
                             updateDatabase(correctAnswer, ans.get(0).text,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
                         case "false":
-                            generateNotification(falseSentences.get(random.nextInt()), body, correctAnswer);
+                            generateNotification("Better Luck Next Time", body, correctAnswer);
                             updateDatabase(correctAnswer, ans.get(0).text,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
                         case "close":
-                            generateNotification(closeSentences.get(random.nextInt()), body, correctAnswer);
+                            generateNotification("No, But Very Close", body, correctAnswer);
                             updateDatabase(correctAnswer, ans.get(0).text,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
@@ -193,7 +168,7 @@ public class App extends Application {
         final String id = identity;
 
         final Date date = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd",Locale.JAPAN);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.JAPAN);
         final String formattedDate = df.format(date);
 
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("quiz");
@@ -204,26 +179,26 @@ public class App extends Application {
                 if (dataSnapshot.child(question).exists())
                         /*dataSnapshot.child(formattedDate).child(question).exists()) {
                     if (dataSnapshot.child(formattedDate).child(question).exists())*/ {
-                        Integer t = dataSnapshot.child(question).child("resTrue")
-                                .getValue(Integer.class);
-                        Integer f = dataSnapshot.child(question).child("resFalse")
-                                .getValue(Integer.class);
-                        Integer c = dataSnapshot.child(question).child("resClose")
-                                .getValue(Integer.class);
+                    Integer t = dataSnapshot.child(question).child("resTrue")
+                            .getValue(Integer.class);
+                    Integer f = dataSnapshot.child(question).child("resFalse")
+                            .getValue(Integer.class);
+                    Integer c = dataSnapshot.child(question).child("resClose")
+                            .getValue(Integer.class);
 
-                        if (t != null || f != null || c != null)
+                    if (t != null || f != null || c != null)
 
-                            switch (id) {
-                                case "true":
-                                    reference.child(question).child("resTrue").setValue(t + 1);
-                                    break;
-                                case "false":
-                                    reference.child(question).child("resFalse").setValue(f + 1);
-                                    break;
-                                case "close":
-                                    reference.child(question).child("resClose").setValue(c + 1);
-                                    break;
-                            }
+                        switch (id) {
+                            case "true":
+                                reference.child(question).child("resTrue").setValue(t + 1);
+                                break;
+                            case "false":
+                                reference.child(question).child("resFalse").setValue(f + 1);
+                                break;
+                            case "close":
+                                reference.child(question).child("resClose").setValue(c + 1);
+                                break;
+                        }
 
                 } else {
                     reference.child(question).child("answer").setValue(answer);

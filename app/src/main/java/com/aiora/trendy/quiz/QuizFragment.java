@@ -46,7 +46,7 @@ public class QuizFragment extends Fragment {
 
         quizData = new ArrayList<>();
 
-        reference = FirebaseDatabase.getInstance().getReference("quiz/test");
+        reference = FirebaseDatabase.getInstance().getReference("quiz");
         reference.orderByChild("date").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -63,12 +63,7 @@ public class QuizFragment extends Fragment {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                FetchQuizData data = dataSnapshot.getValue(FetchQuizData.class);
-                quizData.add(data);
 
-                Collections.reverse(quizData);
-                adapter = new QuizRecyclerViewAdapter(quizData, getActivity());
-                recyclerView.setAdapter(adapter);
             }
 
             @Override
