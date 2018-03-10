@@ -150,7 +150,7 @@ public class App extends Application {
                             .setSmallIcon(R.drawable.ic_stat_onesignal_default)
                             .setContentTitle(title)
                             .setPriority(Notification.PRIORITY_MAX)
-                            .addAction(action)
+                            /*.addAction(action)*/
                             .setContentText(message);
 
             if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[100]);
