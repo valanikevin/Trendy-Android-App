@@ -11,6 +11,7 @@ import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.aiora.trendy.util.Log;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +21,8 @@ import com.onesignal.OSNotificationAction;
 import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OSNotificationPayload;
 import com.onesignal.OneSignal;
+
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,7 +50,8 @@ public class App extends Application {
         @Override
         public void notificationOpened(OSNotificationOpenResult result) {
             try {
-                //JSONObject data = result.notification.payload.additionalData;
+                JSONObject data = result.notification.payload.additionalData;
+                String explain = data.getString("exp");
                 //String webViewUrl = (data != null) ? data.optString("url", null) : null;
 
                 OSNotificationAction.ActionType actionType = result.action.type;
@@ -75,17 +79,17 @@ public class App extends Application {
                     switch (result.action.actionID) {
                         case "true":
                             generateNotification("Your Answer Is Correct", body, correctAnswer);
-                            updateDatabase(correctAnswer, ans.get(0).text,
+                            updateDatabase(correctAnswer, ans.get(0).text,explain,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
                         case "false":
                             generateNotification("Better Luck Next Time", body, correctAnswer);
-                            updateDatabase(correctAnswer, ans.get(0).text,
+                            updateDatabase(correctAnswer, ans.get(0).text,explain,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
                         case "close":
                             generateNotification("No, But Very Close", body, correctAnswer);
-                            updateDatabase(correctAnswer, ans.get(0).text,
+                            updateDatabase(correctAnswer, ans.get(0).text,explain,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
                     }
@@ -158,7 +162,7 @@ public class App extends Application {
         }
     }
 
-    public void updateDatabase(String ans, String op1, String op2, String op3, final String ques, String identity) {
+    public void updateDatabase(String ans, String op1,String explain, String op2, String op3, final String ques, String identity) {
 
         final String answer = ans;
         final String optionOne = op1;
@@ -166,6 +170,7 @@ public class App extends Application {
         final String optionThree = op3;
         final String question = ques;
         final String id = identity;
+        final String exp = explain;
 
         final Date date = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.JAPAN);
@@ -207,6 +212,7 @@ public class App extends Application {
                     reference.child(question).child("option3").setValue(optionThree);
                     reference.child(question).child("question").setValue(question);
                     reference.child(question).child("date").setValue(formattedDate);
+                    reference.child(question).child("explain").setValue(exp);
                     switch (id) {
                         case "true":
                             reference.child(question).child("resTrue").setValue(1);
