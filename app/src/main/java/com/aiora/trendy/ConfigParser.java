@@ -9,21 +9,11 @@ import com.aiora.trendy.drawer.NavItem;
 import com.aiora.trendy.drawer.SimpleMenu;
 import com.aiora.trendy.drawer.SimpleSubMenu;
 import com.aiora.trendy.providers.CustomIntent;
-import com.aiora.trendy.providers.facebook.FacebookFragment;
-import com.aiora.trendy.providers.instagram.InstagramFragment;
-import com.aiora.trendy.providers.maps.MapsFragment;
 import com.aiora.trendy.providers.overview.ui.OverviewFragment;
-import com.aiora.trendy.providers.pinterest.PinterestFragment;
-import com.aiora.trendy.providers.radio.ui.RadioFragment;
 import com.aiora.trendy.providers.rss.ui.RssFragment;
-import com.aiora.trendy.providers.soundcloud.ui.SoundCloudFragment;
 import com.aiora.trendy.providers.tumblr.ui.TumblrFragment;
-import com.aiora.trendy.providers.tv.TvFragment;
-import com.aiora.trendy.providers.twitter.ui.TweetsFragment;
 import com.aiora.trendy.providers.web.WebviewFragment;
-import com.aiora.trendy.providers.woocommerce.ui.WooCommerceFragment;
 import com.aiora.trendy.providers.wordpress.ui.WordpressFragment;
-import com.aiora.trendy.providers.youtube.ui.YoutubeFragment;
 import com.aiora.trendy.util.Helper;
 import com.aiora.trendy.util.Log;
 
@@ -183,19 +173,19 @@ public class ConfigParser extends AsyncTask<Void, Void, Void> {
         Class<? extends Fragment> tabClass = null;
         if (tabProvider.equals("wordpress"))
             tabClass = WordpressFragment.class;
-        else if (tabProvider.equals("facebook"))
-            tabClass = FacebookFragment.class;
+        /*else if (tabProvider.equals("facebook"))
+            tabClass = FacebookFragment.class;*/
         else if (tabProvider.equals("rss"))
             tabClass = RssFragment.class;
-        else if (tabProvider.equals("youtube"))
+        /*else if (tabProvider.equals("youtube"))
             tabClass = YoutubeFragment.class;
         else if (tabProvider.equals("instagram"))
-            tabClass = InstagramFragment.class;
+            tabClass = InstagramFragment.class;*/
         else if (tabProvider.equals("webview"))
             tabClass = WebviewFragment.class;
         else if (tabProvider.equals("tumblr"))
             tabClass = TumblrFragment.class;
-        else if (tabProvider.equals("stream"))
+        /*else if (tabProvider.equals("stream"))
             tabClass = TvFragment.class;
         else if (tabProvider.equals("soundcloud"))
             tabClass = SoundCloudFragment.class;
@@ -208,7 +198,7 @@ public class ConfigParser extends AsyncTask<Void, Void, Void> {
         else if (tabProvider.equals("pinterest"))
             tabClass = PinterestFragment.class;
         else if (tabProvider.equals("woocommerce"))
-            tabClass = WooCommerceFragment.class;
+            tabClass = WooCommerceFragment.class;*/
         else if (tabProvider.equals("custom"))
             tabClass = CustomIntent.class;
         else if (tabProvider.equals("overview"))

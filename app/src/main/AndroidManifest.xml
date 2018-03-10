@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.aiora.trendy"
-    android:versionCode="12"
-    android:versionName="1.1">
+    android:versionCode="15"
+    android:versionName="1.2.1">
 
     <!-- Always Required to get content and check if internet is available -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -67,9 +67,6 @@
             android:name=".attachmentviewer.ui.AttachmentActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".attachmentviewer.ui.AudioPlayerActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity
             android:name=".attachmentviewer.ui.VideoPlayerActivity"
             android:configChanges="orientation|screenSize" />
         <activity
@@ -93,7 +90,6 @@
             android:name=".providers.soundcloud.player.player.PlaybackService"
             android:exported="false" />
         <service android:name=".providers.radio.player.RadioService" />
-        <service android:name=".attachmentviewer.MusicService" />
 
         <!--
         A receiver that will receive media buttons and send as

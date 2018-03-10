@@ -112,9 +112,11 @@ public class WordpressPostsLoader implements WordpressPostsTask.WordpressPostsCa
     private void showErrorMessage(){
         String message;
         if ((!info.baseurl.startsWith("http") || info.baseurl.endsWith("/")) && info.provider instanceof JsonApiProvider) {
-            message =  info.baseurl + "' is most likely not a valid API base url.";
+            message = "Your internet speed is slow. ";
+            //message =  info.baseurl + "' is most likely not a valid API base url.";
         } else {
-            message = "The result of '" + url + "' does not appear to return valid JSON or at least not in the expected format.";
+            message = "Your internet speed is slow. ";
+            //message = "The result of '" + url + "' does not appear to return valid JSON or at least not in the expected format.";
         }
 
         if (info.posts == null || info.posts.size() == 0)

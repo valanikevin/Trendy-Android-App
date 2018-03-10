@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.aiora.trendy.Config;
 import com.aiora.trendy.HolderActivity;
 import com.aiora.trendy.R;
-import com.aiora.trendy.providers.instagram.InstagramFragment;
 import com.aiora.trendy.util.Helper;
 import com.aiora.trendy.util.Log;
 
@@ -91,11 +90,11 @@ public class CommentsActivity extends AppCompatActivity {
 						comments.clear();
 
 						JSONObject response;
-						if (InstagramFragment.noAcccessToken(CommentsActivity.this))  {
+						/*if (InstagramFragment.noAcccessToken(CommentsActivity.this))  {
 							response = new JSONObject(parseableString);
-						} else {
+						} else {*/
 							response = Helper.getJSONObjectFromUrl(url);
-						}
+
 
 						JSONArray dataJsonArray = response.getJSONArray("data");
 						for (int i = 0; i < dataJsonArray.length(); i++) {

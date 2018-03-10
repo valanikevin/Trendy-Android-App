@@ -23,9 +23,7 @@ import com.aiora.trendy.HolderActivity;
 import com.aiora.trendy.R;
 import com.aiora.trendy.providers.fav.FavDbAdapter;
 import com.aiora.trendy.providers.rss.ui.RssDetailActivity;
-import com.aiora.trendy.providers.woocommerce.ui.ProductActivity;
 import com.aiora.trendy.providers.wordpress.ui.WordpressDetailActivity;
-import com.aiora.trendy.providers.youtube.ui.YoutubeDetailActivity;
 
 import java.io.Serializable;
 
@@ -150,11 +148,11 @@ public class FavFragment extends ListFragment {
             Serializable object = FavDbAdapter.readSerializedObject(note.getBlob(note.getColumnIndexOrThrow(FavDbAdapter.KEY_OBJECT)));
             int provider = note.getInt(note.getColumnIndexOrThrow(FavDbAdapter.KEY_PROVIDER));
 
-        if (FavDbAdapter.KEY_YOUTUBE == provider) {
+        /*if (FavDbAdapter.KEY_YOUTUBE == provider) {
             Intent intent = new Intent(getActivity(), YoutubeDetailActivity.class);
             intent.putExtra(YoutubeDetailActivity.EXTRA_VIDEO, object);
             startActivity(intent);
-        } else if (FavDbAdapter.KEY_RSS == provider) {
+        } else*/ if (FavDbAdapter.KEY_RSS == provider) {
             Intent intent = new Intent(getActivity(), RssDetailActivity.class);
             intent.putExtra(RssDetailActivity.EXTRA_RSSITEM, object);
             startActivity(intent);
@@ -164,10 +162,10 @@ public class FavFragment extends ListFragment {
             Intent intent = new Intent(getActivity(), WordpressDetailActivity.class);
             intent.putExtra(WordpressDetailActivity.EXTRA_POSTITEM, object);
             startActivity(intent);
-        } else if (FavDbAdapter.KEY_WOOCOMMERCE == provider) {
+        } /*else if (FavDbAdapter.KEY_WOOCOMMERCE == provider) {
             Intent intent = new Intent(getActivity(), ProductActivity.class);
             intent.putExtra(ProductActivity.PRODUCT, object);
             startActivity(intent);
-        }
+        }*/
     }
 }

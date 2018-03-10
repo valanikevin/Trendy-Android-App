@@ -29,6 +29,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.aiora.trendy.quiz.QuizFragment;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -418,6 +419,9 @@ public class MainActivity extends AppCompatActivity implements MenuItemCallback,
                 return true;
             case R.id.rate_us:
                 rateUsIntent(this);
+                return true;
+            case R.id.quiz_result:
+                HolderActivity.startActivity(this, QuizFragment.class, null);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -9,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.aiora.trendy.R;
-import com.aiora.trendy.attachmentviewer.loader.DefaultAudioLoader;
 import com.aiora.trendy.attachmentviewer.loader.DefaultFileLoader;
 import com.aiora.trendy.attachmentviewer.loader.DefaultVideoLoader;
 import com.aiora.trendy.attachmentviewer.loader.MediaLoader;
@@ -78,8 +77,8 @@ public class AttachmentActivity extends AppCompatActivity {
                     infos.add(new PicassoImageLoader(mediaAttachment));
                 else if (mediaAttachment.getMime().contains(MediaAttachment.MIME_PATTERN_VID))
                     infos.add(new DefaultVideoLoader(mediaAttachment));
-                else if (mediaAttachment.getMime().contains(MediaAttachment.MIME_PATTERN_AUDIO))
-                    infos.add(new DefaultAudioLoader(mediaAttachment));
+                /*else if (mediaAttachment.getMime().contains(MediaAttachment.MIME_PATTERN_AUDIO))
+                    infos.add(new DefaultAudioLoader(mediaAttachment));*/
                 else
                     infos.add(new DefaultFileLoader(mediaAttachment));
             }

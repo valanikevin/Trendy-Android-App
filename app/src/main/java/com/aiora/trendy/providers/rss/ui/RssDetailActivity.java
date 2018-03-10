@@ -24,7 +24,6 @@ import com.aiora.trendy.HolderActivity;
 import com.aiora.trendy.R;
 import com.aiora.trendy.attachmentviewer.model.MediaAttachment;
 import com.aiora.trendy.attachmentviewer.ui.AttachmentActivity;
-import com.aiora.trendy.attachmentviewer.ui.AudioPlayerActivity;
 import com.aiora.trendy.attachmentviewer.ui.VideoPlayerActivity;
 import com.aiora.trendy.providers.fav.FavDbAdapter;
 import com.aiora.trendy.providers.rss.RSSItem;
@@ -138,9 +137,9 @@ public class RssDetailActivity extends DetailActivity {
 			public void onClick(View arg0){
 				if (videoUrl != null){
 					VideoPlayerActivity.startActivity(RssDetailActivity.this, videoUrl);
-				} else if (audioUrl != null){
+				} /*else if (audioUrl != null){
 					AudioPlayerActivity.startActivity(RssDetailActivity.this, audioUrl, item.getTitle());
-				}
+				}*/
 			}
 		});
 		
