@@ -59,6 +59,7 @@ public class App extends Application {
                 if (!result.notification.isAppInFocus) {
                     Intent mainIntent;
                     mainIntent = new Intent(App.this, MainActivity.class);
+                    mainIntent.putExtra("fromPush",true);
                     mainIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(mainIntent);
                 }
@@ -134,12 +135,24 @@ public class App extends Application {
             notificationHelper.notify(1001, builder);
 
         } else {
+            Intent notificationIntentForResult = new Intent(App.this, MainActivity.class);
+            notificationIntentForResult.putExtra("fromNotification",true);
+            notificationIntentForResult.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            PendingIntent intentForResult = PendingIntent.getActivity(getApplicationContext(), 110,
+                    notificationIntentForResult, 0);
+
+            NotificationCompat.Action action = new NotificationCompat.Action
+                    .Builder(R.drawable.ic_stat_onesignal_default, "Previous", intentForResult).build();
+
             NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(this)
                             .setSmallIcon(R.drawable.ic_stat_onesignal_default)
                             .setContentTitle(title)
                             .setPriority(Notification.PRIORITY_MAX)
+                            .addAction(action)
                             .setContentText(message);
+
             if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[100]);
 
             NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
