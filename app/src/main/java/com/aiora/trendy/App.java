@@ -24,6 +24,7 @@ import com.onesignal.OneSignal;
 
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -76,20 +77,29 @@ public class App extends Application {
                 if (actionType == OSNotificationAction.ActionType.ActionTaken) {
 
                     String body = result.notification.payload.body;
+                    String[] truePhrase = {"Your Answer Is Correct"
+                            ,"Correct"};
+                    String[] falsePhrase = {"Better Luck Next Time"
+                            ,"False"};
+                    String[] closePhrase = {"No, But Very Close"
+                            ,"Close"};
 
                     switch (result.action.actionID) {
                         case "true":
-                            generateNotification("Your Answer Is Correct", body, correctAnswer);
+                            generateNotification(truePhrase[new Random().nextInt(truePhrase.length)]
+                                    , body, correctAnswer);
                             updateDatabase(correctAnswer, ans.get(0).text,explain,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
                         case "false":
-                            generateNotification("Better Luck Next Time", body, correctAnswer);
+                            generateNotification(falsePhrase[new Random().nextInt(falsePhrase.length)]
+                                    , body, correctAnswer);
                             updateDatabase(correctAnswer, ans.get(0).text,explain,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
                         case "close":
-                            generateNotification("No, But Very Close", body, correctAnswer);
+                            generateNotification(closePhrase[new Random().nextInt(closePhrase.length)]
+                                    , body, correctAnswer);
                             updateDatabase(correctAnswer, ans.get(0).text,explain,
                                     ans.get(1).text, ans.get(2).text, body, result.action.actionID);
                             break;
@@ -128,29 +138,19 @@ public class App extends Application {
             Intent notificationIntent = new Intent(App.this, MainActivity.class);
             notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                     | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            PendingIntent intent = PendingIntent.getActivity(getApplicationContext(), 110,
+            PendingIntent intent = PendingIntent.getActivity(getApplicationContext(), 0,
                     notificationIntent, 0);
             builder.setContentIntent(intent);
 
             notificationHelper.notify(1001, builder);
 
         } else {
-            Intent notificationIntentForResult = new Intent(App.this, MainActivity.class);
-            notificationIntentForResult.putExtra("fromNotification",true);
-            notificationIntentForResult.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
-                    | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            PendingIntent intentForResult = PendingIntent.getActivity(getApplicationContext(), 110,
-                    notificationIntentForResult, 0);
-
-            NotificationCompat.Action action = new NotificationCompat.Action
-                    .Builder(R.drawable.ic_stat_onesignal_default, "Previous", intentForResult).build();
 
             NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(this)
                             .setSmallIcon(R.drawable.ic_stat_onesignal_default)
                             .setContentTitle(title)
                             .setPriority(Notification.PRIORITY_MAX)
-                            /*.addAction(action)*/
                             .setContentText(message);
 
             if (Build.VERSION.SDK_INT >= 21) mBuilder.setVibrate(new long[100]);
@@ -175,7 +175,7 @@ public class App extends Application {
         }
     }
 
-    public void updateDatabase(String ans, String op1,String explain, String op2, String op3, final String ques, String identity) {
+    public void updateDatabase(String ans, String op1,String explain, String op2, String op3, String ques, String identity) {
 
         final String answer = ans;
         final String optionOne = op1;
@@ -186,8 +186,9 @@ public class App extends Application {
         final String exp = explain;
 
         final Date date = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.JAPAN);
-        final String formattedDate = df.format(date);
+        //SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.JAPAN);
+        final String formattedDate = DateFormat.getInstance().format(date);
+        //final String formattedDate = df.format(date);
 
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("quiz");
         reference.addListenerForSingleValueEvent(new ValueEventListener() {

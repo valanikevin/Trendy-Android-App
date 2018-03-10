@@ -193,10 +193,6 @@ public class MainActivity extends AppCompatActivity implements MenuItemCallback,
             }
         });
 
-        /*if(getIntent().getExtras().getBoolean("fromNotification",false)){
-            HolderActivity.startActivity(this, QuizFragment.class, null);
-        }*/
-
     }
 
     @SuppressLint("NewApi")
