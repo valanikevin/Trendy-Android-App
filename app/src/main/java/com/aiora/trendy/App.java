@@ -198,55 +198,62 @@ public class App extends Application {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if (dataSnapshot.child(questionDate).exists())
+                reference.getParent().child("version").setValue("1.3.1");
+
+                if(reference.getParent().child("version").getKey() != null) {
+
+                    if (dataSnapshot.child(questionDate).exists())
                         /*dataSnapshot.child(formattedDate).child(question).exists()) {
                     if (dataSnapshot.child(formattedDate).child(question).exists())*/ {
-                    Integer t = dataSnapshot.child(question).child("resTrue")
-                            .getValue(Integer.class);
-                    Integer f = dataSnapshot.child(question).child("resFalse")
-                            .getValue(Integer.class);
-                    Integer c = dataSnapshot.child(question).child("resClose")
-                            .getValue(Integer.class);
+                        Integer t = dataSnapshot.child(question).child("resTrue")
+                                .getValue(Integer.class);
+                        Integer f = dataSnapshot.child(question).child("resFalse")
+                                .getValue(Integer.class);
+                        Integer c = dataSnapshot.child(question).child("resClose")
+                                .getValue(Integer.class);
 
-                    if (t != null || f != null || c != null)
+                        if (t != null || f != null || c != null)
 
+                            switch (id) {
+                                case "true":
+                                    reference.child(questionDate).child("resTrue").setValue(t + 1);
+                                    break;
+                                case "false":
+                                    reference.child(questionDate).child("resFalse").setValue(f + 1);
+                                    break;
+                                case "close":
+                                    reference.child(questionDate).child("resClose").setValue(c + 1);
+                                    break;
+                            }
+
+                    } else {
+                        reference.child(questionDate).child("answer").setValue(answer);
+                        reference.child(questionDate).child("option1").setValue(optionOne);
+                        reference.child(questionDate).child("option2").setValue(optionTwo);
+                        reference.child(questionDate).child("option3").setValue(optionThree);
+                        reference.child(questionDate).child("question").setValue(question);
+                        reference.child(questionDate).child("date").setValue(formattedDate);
+                        reference.child(questionDate).child("explain").setValue(exp);
                         switch (id) {
                             case "true":
-                                reference.child(questionDate).child("resTrue").setValue(t + 1);
+                                reference.child(questionDate).child("resTrue").setValue(1);
+                                reference.child(questionDate).child("resFalse").setValue(0);
+                                reference.child(questionDate).child("resClose").setValue(0);
                                 break;
                             case "false":
-                                reference.child(questionDate).child("resFalse").setValue(f + 1);
+                                reference.child(questionDate).child("resTrue").setValue(0);
+                                reference.child(questionDate).child("resFalse").setValue(1);
+                                reference.child(questionDate).child("resClose").setValue(0);
                                 break;
                             case "close":
-                                reference.child(questionDate).child("resClose").setValue(c + 1);
+                                reference.child(questionDate).child("resTrue").setValue(0);
+                                reference.child(questionDate).child("resFalse").setValue(0);
+                                reference.child(questionDate).child("resClose").setValue(1);
                                 break;
                         }
-
-                } else {
-                    reference.child(questionDate).child("answer").setValue(answer);
-                    reference.child(questionDate).child("option1").setValue(optionOne);
-                    reference.child(questionDate).child("option2").setValue(optionTwo);
-                    reference.child(questionDate).child("option3").setValue(optionThree);
-                    reference.child(questionDate).child("question").setValue(question);
-                    reference.child(questionDate).child("date").setValue(formattedDate);
-                    reference.child(questionDate).child("explain").setValue(exp);
-                    switch (id) {
-                        case "true":
-                            reference.child(questionDate).child("resTrue").setValue(1);
-                            reference.child(questionDate).child("resFalse").setValue(0);
-                            reference.child(questionDate).child("resClose").setValue(0);
-                            break;
-                        case "false":
-                            reference.child(questionDate).child("resTrue").setValue(0);
-                            reference.child(questionDate).child("resFalse").setValue(1);
-                            reference.child(questionDate).child("resClose").setValue(0);
-                            break;
-                        case "close":
-                            reference.child(questionDate).child("resTrue").setValue(0);
-                            reference.child(questionDate).child("resFalse").setValue(0);
-                            reference.child(questionDate).child("resClose").setValue(1);
-                            break;
                     }
+
+                    reference.getParent().child("version").removeValue();
                 }
 
                 /*if (dataSnapshot.child(formattedDate).exists()
