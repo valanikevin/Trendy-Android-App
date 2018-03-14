@@ -46,7 +46,7 @@ public class QuizFragment extends Fragment {
         quizData = new ArrayList<>();
 
         reference = FirebaseDatabase.getInstance().getReference("quiz");
-        reference.addChildEventListener(new ChildEventListener() {
+        reference.orderByKey().addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 

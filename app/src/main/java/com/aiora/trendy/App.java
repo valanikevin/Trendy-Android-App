@@ -51,16 +51,11 @@ public class App extends Application {
         @Override
         public void notificationOpened(OSNotificationOpenResult result) {
             try {
-                JSONObject data = result.notification.payload.additionalData;
-                String explain = data.getString("exp");
                 //String webViewUrl = (data != null) ? data.optString("url", null) : null;
-
-                OSNotificationAction.ActionType actionType = result.action.type;
 
                 if (!result.notification.isAppInFocus) {
                     Intent mainIntent;
                     mainIntent = new Intent(App.this, MainActivity.class);
-                    mainIntent.putExtra("fromPush",true);
                     mainIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(mainIntent);
                 }
@@ -73,6 +68,11 @@ public class App extends Application {
                         correctAnswer = ans.get(i).text;
                     }
                 }
+
+                JSONObject data = result.notification.payload.additionalData;
+                String explain = data.getString("exp");
+
+                OSNotificationAction.ActionType actionType = result.action.type;
 
                 if (actionType == OSNotificationAction.ActionType.ActionTaken) {
 
@@ -182,6 +182,7 @@ public class App extends Application {
         final String optionTwo = op2;
         final String optionThree = op3;
         final String question = ques;
+
         final String id = identity;
         final String exp = explain;
 
@@ -190,12 +191,14 @@ public class App extends Application {
         final String formattedDate = DateFormat.getInstance().format(date);
         //final String formattedDate = df.format(date);
 
+        final String questionDate = question + " " + formattedDate;
+
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("quiz");
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if (dataSnapshot.child(question).exists())
+                if (dataSnapshot.child(questionDate).exists())
                         /*dataSnapshot.child(formattedDate).child(question).exists()) {
                     if (dataSnapshot.child(formattedDate).child(question).exists())*/ {
                     Integer t = dataSnapshot.child(question).child("resTrue")
@@ -209,39 +212,39 @@ public class App extends Application {
 
                         switch (id) {
                             case "true":
-                                reference.child(question).child("resTrue").setValue(t + 1);
+                                reference.child(questionDate).child("resTrue").setValue(t + 1);
                                 break;
                             case "false":
-                                reference.child(question).child("resFalse").setValue(f + 1);
+                                reference.child(questionDate).child("resFalse").setValue(f + 1);
                                 break;
                             case "close":
-                                reference.child(question).child("resClose").setValue(c + 1);
+                                reference.child(questionDate).child("resClose").setValue(c + 1);
                                 break;
                         }
 
                 } else {
-                    reference.child(question).child("answer").setValue(answer);
-                    reference.child(question).child("option1").setValue(optionOne);
-                    reference.child(question).child("option2").setValue(optionTwo);
-                    reference.child(question).child("option3").setValue(optionThree);
-                    reference.child(question).child("question").setValue(question);
-                    reference.child(question).child("date").setValue(formattedDate);
-                    reference.child(question).child("explain").setValue(exp);
+                    reference.child(questionDate).child("answer").setValue(answer);
+                    reference.child(questionDate).child("option1").setValue(optionOne);
+                    reference.child(questionDate).child("option2").setValue(optionTwo);
+                    reference.child(questionDate).child("option3").setValue(optionThree);
+                    reference.child(questionDate).child("question").setValue(question);
+                    reference.child(questionDate).child("date").setValue(formattedDate);
+                    reference.child(questionDate).child("explain").setValue(exp);
                     switch (id) {
                         case "true":
-                            reference.child(question).child("resTrue").setValue(1);
-                            reference.child(question).child("resFalse").setValue(0);
-                            reference.child(question).child("resClose").setValue(0);
+                            reference.child(questionDate).child("resTrue").setValue(1);
+                            reference.child(questionDate).child("resFalse").setValue(0);
+                            reference.child(questionDate).child("resClose").setValue(0);
                             break;
                         case "false":
-                            reference.child(question).child("resTrue").setValue(0);
-                            reference.child(question).child("resFalse").setValue(1);
-                            reference.child(question).child("resClose").setValue(0);
+                            reference.child(questionDate).child("resTrue").setValue(0);
+                            reference.child(questionDate).child("resFalse").setValue(1);
+                            reference.child(questionDate).child("resClose").setValue(0);
                             break;
                         case "close":
-                            reference.child(question).child("resTrue").setValue(0);
-                            reference.child(question).child("resFalse").setValue(0);
-                            reference.child(question).child("resClose").setValue(1);
+                            reference.child(questionDate).child("resTrue").setValue(0);
+                            reference.child(questionDate).child("resFalse").setValue(0);
+                            reference.child(questionDate).child("resClose").setValue(1);
                             break;
                     }
                 }
