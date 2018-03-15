@@ -175,7 +175,7 @@ public class App extends Application {
         }
     }
 
-    public void updateDatabase(String ans, String op1,String explain, String op2, String op3, String ques, String identity) {
+    public void updateDatabase(String ans, String op1, String explain, String op2, String op3, final String ques, String identity) {
 
         final String answer = ans;
         final String optionOne = op1;
@@ -187,68 +187,71 @@ public class App extends Application {
         final String exp = explain;
 
         final Date date = Calendar.getInstance().getTime();
-        //SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.JAPAN);
-        final String formattedDate = DateFormat.getInstance().format(date);
-        //final String formattedDate = df.format(date);
 
-        final String questionDate = question + " " + formattedDate;
+        SimpleDateFormat df3 = new SimpleDateFormat("dd-MM-yyyy");
+        final String formattedDate = df3.format(date);
 
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("quiz");
+
+        reference.getParent().child("version").setValue("1.2");
+
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                reference.getParent().child("version").setValue("1.3.1");
+                String finalNode = formattedDate + " " + question;
+                //String finalQuestionPlus = question + (dataSnapshot.getChildrenCount()+1);
+                //String finalQuestion = question + (dataSnapshot.getChildrenCount());
 
                 if(reference.getParent().child("version").getKey() != null) {
 
-                    if (dataSnapshot.child(questionDate).exists())
+                    if (dataSnapshot.child(finalNode).exists())
                         /*dataSnapshot.child(formattedDate).child(question).exists()) {
                     if (dataSnapshot.child(formattedDate).child(question).exists())*/ {
-                        Integer t = dataSnapshot.child(question).child("resTrue")
+                        Integer t = dataSnapshot.child(finalNode).child("resTrue")
                                 .getValue(Integer.class);
-                        Integer f = dataSnapshot.child(question).child("resFalse")
+                        Integer f = dataSnapshot.child(finalNode).child("resFalse")
                                 .getValue(Integer.class);
-                        Integer c = dataSnapshot.child(question).child("resClose")
+                        Integer c = dataSnapshot.child(finalNode).child("resClose")
                                 .getValue(Integer.class);
 
                         if (t != null || f != null || c != null)
 
                             switch (id) {
                                 case "true":
-                                    reference.child(questionDate).child("resTrue").setValue(t + 1);
+                                    reference.child(finalNode).child("resTrue").setValue(t + 1);
                                     break;
                                 case "false":
-                                    reference.child(questionDate).child("resFalse").setValue(f + 1);
+                                    reference.child(finalNode).child("resFalse").setValue(f + 1);
                                     break;
                                 case "close":
-                                    reference.child(questionDate).child("resClose").setValue(c + 1);
+                                    reference.child(finalNode).child("resClose").setValue(c + 1);
                                     break;
                             }
 
                     } else {
-                        reference.child(questionDate).child("answer").setValue(answer);
-                        reference.child(questionDate).child("option1").setValue(optionOne);
-                        reference.child(questionDate).child("option2").setValue(optionTwo);
-                        reference.child(questionDate).child("option3").setValue(optionThree);
-                        reference.child(questionDate).child("question").setValue(question);
-                        reference.child(questionDate).child("date").setValue(formattedDate);
-                        reference.child(questionDate).child("explain").setValue(exp);
+                        reference.child(finalNode).child("answer").setValue(answer);
+                        reference.child(finalNode).child("option1").setValue(optionOne);
+                        reference.child(finalNode).child("option2").setValue(optionTwo);
+                        reference.child(finalNode).child("option3").setValue(optionThree);
+                        reference.child(finalNode).child("question").setValue(question);
+                        reference.child(finalNode).child("date").setValue(formattedDate);
+                        reference.child(finalNode).child("explain").setValue(exp);
                         switch (id) {
                             case "true":
-                                reference.child(questionDate).child("resTrue").setValue(1);
-                                reference.child(questionDate).child("resFalse").setValue(0);
-                                reference.child(questionDate).child("resClose").setValue(0);
+                                reference.child(finalNode).child("resTrue").setValue(1);
+                                reference.child(finalNode).child("resFalse").setValue(0);
+                                reference.child(finalNode).child("resClose").setValue(0);
                                 break;
                             case "false":
-                                reference.child(questionDate).child("resTrue").setValue(0);
-                                reference.child(questionDate).child("resFalse").setValue(1);
-                                reference.child(questionDate).child("resClose").setValue(0);
+                                reference.child(finalNode).child("resTrue").setValue(0);
+                                reference.child(finalNode).child("resFalse").setValue(1);
+                                reference.child(finalNode).child("resClose").setValue(0);
                                 break;
                             case "close":
-                                reference.child(questionDate).child("resTrue").setValue(0);
-                                reference.child(questionDate).child("resFalse").setValue(0);
-                                reference.child(questionDate).child("resClose").setValue(1);
+                                reference.child(finalNode).child("resTrue").setValue(0);
+                                reference.child(finalNode).child("resFalse").setValue(0);
+                                reference.child(finalNode).child("resClose").setValue(1);
                                 break;
                         }
                     }
