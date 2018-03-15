@@ -39,7 +39,11 @@ public class QuizFragment extends Fragment {
         View view = inflater.inflate(R.layout.quiz_fragment, container, false);
 
         recyclerView = view.findViewById(R.id.quizRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        mLayoutManager.setReverseLayout(true);
+        mLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(mLayoutManager);
 
         layout = view.findViewById(R.id.loadingLayout);
 
