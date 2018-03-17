@@ -54,9 +54,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".providers.rss.ui.RssDetailActivity" />
-        <activity android:name=".providers.youtube.ui.YoutubeDetailActivity" />
+        <!--<activity android:name=".providers.youtube.ui.YoutubeDetailActivity" />-->
         <activity android:name=".providers.wordpress.ui.WordpressDetailActivity" />
-        <activity android:name=".providers.woocommerce.ui.ProductActivity" />
+        <!--<activity android:name=".providers.woocommerce.ui.ProductActivity" />-->
         <activity
             android:name=".comments.CommentsActivity"
             android:configChanges="orientation|screenSize" />
@@ -69,27 +69,27 @@
         <activity
             android:name=".attachmentviewer.ui.VideoPlayerActivity"
             android:configChanges="orientation|screenSize" />
-        <activity
+        <!--<activity
             android:name=".providers.woocommerce.ui.CheckoutActivity"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize" />-->
         <activity
             android:name=".providers.tumblr.ui.TumblrPagerActivity"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
-        <activity
-            android:name=".providers.youtube.player.YouTubePlayerActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="sensorPortrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <!--<activity
+           android:name=".providers.youtube.player.YouTubePlayerActivity"
+           android:configChanges="keyboardHidden|orientation|screenSize"
+           android:screenOrientation="sensorPortrait"
+           android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />-->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
 
         <!-- Services -->
-        <service
-            android:name=".providers.soundcloud.player.player.PlaybackService"
-            android:exported="false" />
-        <service android:name=".providers.radio.player.RadioService" />
+        <!--<service
+           android:name=".providers.soundcloud.player.player.PlaybackService"
+           android:exported="false" />-->
+        <!--<service android:name=".providers.radio.player.RadioService" />-->
 
         <!--
         A receiver that will receive media buttons and send as
@@ -102,16 +102,16 @@
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".providers.soundcloud.player.player.PlayerReceiver">
-            <intent-filter>
-                <action android:name="android.media.AUDIO_BECOMING_NOISY" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name=".providers.soundcloud.player.media.MediaSessionReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.MEDIA_BUTTON" />
-            </intent-filter>
-        </receiver>
+        <!--<receiver android:name=".providers.soundcloud.player.player.PlayerReceiver">
+           <intent-filter>
+               <action android:name="android.media.AUDIO_BECOMING_NOISY" />
+           </intent-filter>
+       </receiver>-->
+        <!--<receiver android:name=".providers.soundcloud.player.media.MediaSessionReceiver">
+           <intent-filter>
+               <action android:name="android.intent.action.MEDIA_BUTTON" />
+           </intent-filter>
+       </receiver>-->
 
         <!-- Meta Data -->
         <meta-data

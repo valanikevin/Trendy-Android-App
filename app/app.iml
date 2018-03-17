@@ -100,6 +100,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaPrecompile" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/multi-dex" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/prebuild" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/reload-dex" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
@@ -137,6 +138,7 @@
     <orderEntry type="library" name="com.android.support:support-v4-26.0.2" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-core-11.2.0" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-common-11.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="com.android.support:multidex-instrumentation-1.0.2" level="project" />
     <orderEntry type="library" name="com.devbrackets.android:exomedia-4.0.3" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-tasks-11.2.0" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-ads-11.2.0" level="project" />
@@ -148,6 +150,7 @@
     <orderEntry type="library" name="com.onesignal:OneSignal-3.8.2" level="project" />
     <orderEntry type="library" name="com.android.support:cardview-v7-26.0.2" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-base-11.2.0" level="project" />
+    <orderEntry type="library" name="com.android.support:multidex-1.0.3" level="project" />
     <orderEntry type="library" name="com.android.support:recyclerview-v7-26.0.2" level="project" />
     <orderEntry type="library" name="com.android.support:support-media-compat-26.0.2" level="project" />
     <orderEntry type="library" name="com.google.firebase:firebase-database-11.2.0" level="project" />

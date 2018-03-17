@@ -60,7 +60,7 @@
     <string name="tweet_share_header">\'s tweet</string>
 
     <!-- rss -->
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="feed_title_value">Feed title</string>
     <string name="feed_link_value">Feed description</string>
     <string name="feed_description_value">Feed link</string>
